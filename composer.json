@@ -17,7 +17,7 @@
         "lucatume/wp-utils": "dev-master"
     },
     "require-dev": {
-        "codeception/codeception": "1.8.*@dev"
+        "codeception/codeception": "*"
     },
     "autoload": {
         "psr-0": {
