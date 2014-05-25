@@ -5,18 +5,19 @@
     "keywords": ["wordpress"],
     "homepage": "http://github.com/lucatume/wp-customizer",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "theAverageDev (Luca Tumedei)",
-            "email": "luca@theaveragedev.com",
-            "homepage": "http://theaveragedev.com",
-            "role": "Developer"
-        }
-    ],
+    "authors": [{
+        "name": "theAverageDev (Luca Tumedei)",
+        "email": "luca@theaveragedev.com",
+        "homepage": "http://theaveragedev.com",
+        "role": "Developer"
+    }],
     "require": {
         "php": ">=5.3.0",
         "lucatume/tdd-helpers": "dev-master",
         "lucatume/wp-utils": "dev-master"
+    },
+    "require-dev": {
+        "codeception/codeception": "1.8.*@dev"
     },
     "autoload": {
         "psr-0": {
