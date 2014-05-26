@@ -60,12 +60,4 @@ class ThemeCustomizeSectionTest extends \PHPUnit_Framework_TestCase
             );
         $this->sut->register($f);
     }
-    public function testWillFetchLibraryControlsInTheConstruct()
-    {
-        $sut = new ThemeCustomizeSection('some title');
-        $this->assertNotNull($sut->tadControls);
-        $this->assertInternalType('array', $sut->tadControls);
-        $this->assertArrayHasKey('multi-image',$sut->tadControls);
-        $this->assertEquals('\tad\customizer\controls\MultiImageControl',$sut->tadControls['multi-image']);
-    }
 }
