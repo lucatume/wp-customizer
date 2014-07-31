@@ -1,13 +1,11 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 if (!class_exists('WP_Customize_Control')) return NULL;
 
 /**
  * Class to create a custom post control
  */
-class PostDropdownCustomControl extends \WP_Customize_Control
+class paulund_PostDropdownCustomControl extends \WP_Customize_Control
 {
     private $posts = false;
     

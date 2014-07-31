@@ -1,7 +1,5 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 if (!class_exists('WP_Customize_Control')) return NULL;
 
 /**

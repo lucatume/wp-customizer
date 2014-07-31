@@ -1,14 +1,12 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 /**
  * Customize for user select, extend the WP customizer
  */
 
 if (!class_exists('WP_Customize_Control')) return NULL;
 
-class UserDropdownCustomControl extends \WP_Customize_Control
+class paulund_UserDropdownCustomControl extends \WP_Customize_Control
 {
     
     private $users = false;

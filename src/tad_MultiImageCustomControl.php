@@ -1,13 +1,10 @@
 <?php
-namespace tad\customizer\controls;
-
-use tad\utils\Script as Script;
 
 if (!class_exists('\WP_Customize_Control')) {
     return null;
 }
 
-class MultiImageCustomControl extends \WP_Customize_Control
+class tad_MultiImageCustomControl extends WP_Customize_Control
 {
     public $type = 'multi-image';
 
@@ -20,9 +17,9 @@ class MultiImageCustomControl extends \WP_Customize_Control
     {
         wp_enqueue_media();
         $jsPath = '/js/multi-image.js';
-        wp_enqueue_script('multi-image-control', Script::suffix($jsPath), array('jquery', 'jquery-ui-sortable'));
+        wp_enqueue_script('multi-image-control', tad_Script::suffix($jsPath), array('jquery', 'jquery-ui-sortable'));
         $cssPath = '/css/multi-image.css';
-        wp_enqueue_style('multi-image-control', Script::suffix($cssPath));
+        wp_enqueue_style('multi-image-control', tad_Script::suffix($cssPath));
     }
     public function render_content()
     {

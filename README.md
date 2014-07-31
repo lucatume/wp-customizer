@@ -6,7 +6,7 @@ A set of custom controls by [paulund](https://github.com/paulund), a multi-image
 Wraps methods and hooking needed to add sections and fields to the theme customize section to allow code like
 
     // add the section
-    $section = new ThemeCustomizeSection('Announcement', 'acme_announcement', 'The home page announcement.', 'acme');
+    $section = new tad_ThemeCustomizeSection('Announcement', 'acme_announcement', 'The home page announcement.', 'acme');
     
     // add a checkbox to toggle showing the announcement on the home page
     $section->addSetting('announcement_show', 'Show the announcement on the homeapage.', true, 'checkbox');

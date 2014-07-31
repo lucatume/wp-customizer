@@ -1,14 +1,12 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 if ( ! class_exists( 'WP_Customize_Control' ) )
     return NULL;
 
 /**
  * A class to create a dropdown for all google fonts
  */
- class GoogleFontDropdownCustom_Control extends \WP_Customize_Control
+ class paulund_GoogleFontDropdownCustomControl extends \WP_Customize_Control
  {
     private $fonts = false;
 

@@ -1,7 +1,5 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 /**
  * Customize for textarea, extend the WP customizer
  *
@@ -11,7 +9,7 @@ if (!class_exists('\WP_Customize_Control')) {
     return NULL;
 }
 
-class TextareaCustomControl extends \WP_Customize_Control
+class paulund_TextareaCustomControl extends \WP_Customize_Control
 {
     
     /**
