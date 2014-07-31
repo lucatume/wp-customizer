@@ -1,14 +1,12 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 if ( ! class_exists( 'WP_Customize_Control' ) )
     return NULL;
 
 /**
  * Class to create a custom layout control
  */
-class Layout_PickerCustomControl extends \WP_Customize_Control
+class paulund_LayoutPickerCustomControl extends \WP_Customize_Control
 {
       /**
        * Render the content on the theme customizer page

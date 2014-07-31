@@ -1,14 +1,12 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 if ( ! class_exists( 'WP_Customize_Control' ) )
     return NULL;
 
 /**
  * Class to create a custom menu control
  */
-class MenuDropdownCustomControl extends \WP_Customize_Control
+class paulund_MenuDropdownCustomControl extends \WP_Customize_Control
 {
     private $menus = false;
 

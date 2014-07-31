@@ -1,14 +1,12 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 /**
  * Customize for taxonomy with dropdown, extend the WP customizer
  */
 
 if (!class_exists('WP_Customize_Control')) return NULL;
 
-class TaxonomyDropdownCustomControl extends \WP_Customize_Control
+class paulund_TaxonomyDropdownCustomControl extends \WP_Customize_Control
 {
     private $options = false;
     

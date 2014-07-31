@@ -1,13 +1,11 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 if (!class_exists('WP_Customize_Control')) return NULL;
 
 /**
  * Class to create a custom tags control
  */
-class TextEditorCustomControl extends \WP_Customize_Control
+class paulund_TextEditorCustomControl extends \WP_Customize_Control
 {
     
     /**

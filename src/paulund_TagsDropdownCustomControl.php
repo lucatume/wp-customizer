@@ -1,13 +1,11 @@
 <?php
 
-namespace paulund\customizer\controls;
-
 if (!class_exists('WP_Customize_Control')) return NULL;
 
 /**
  * Class to create a custom tags control
  */
-class TagsDropdownCustomControl extends \WP_Customize_Control
+class paulund_TagsDropdownCustomControl extends \WP_Customize_Control
 {
     private $tags = false;
     

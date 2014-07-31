@@ -1,13 +1,6 @@
 <?php
 
-namespace tad\wrappers;
-
-
-use tad\utils\Str as Str;
-use tad\adapters\Functions;
-use tad\interfaces\FunctionsAdapter;
-
-class ThemeCustomizeSection
+class tad_ThemeCustomizerSection
 {
     protected $functions = null;
     protected $sectionTitle;
@@ -20,17 +13,16 @@ class ThemeCustomizeSection
     protected $classControlTypes = array('color', 'image', 'upload', 'background-image', 'header-image');
     protected $_includesPath = '';
     
-    public function __construct($sectionTitle, $sectionId = null, $description = null, $domain = 'default', \tad\interfaces\FunctionsAdapter $functions = null)
-    {
+    public function __construct($sectionTitle, $sectionId = null, $description = null, $domain = 'default',tad_FunctionsAdapterInterface $functions = null) {
         $this->_includesPath = implode(DIRECTORY_SEPARATOR, array(dirname(dirname(__FILE__)), 'src'));
         if (is_null($functions)) {
-            $functions = new \tad\adapters\Functions();
+            $functions = new tad_FunctionsAdapter();
         }
         $this->functions = $functions;
         $this->domain = $domain;
         $this->sectionTitle = $sectionTitle;
         if (is_null($sectionId)) {
-            $sectionId = Str::hyphen($sectionTitle);
+            $sectionId = tad_Str::hyphen($sectionTitle);
         }
         $this->sectionId = $sectionId;
         $this->description = $description;
@@ -49,7 +41,7 @@ class ThemeCustomizeSection
     protected function loadControlsFrom($frags)
     {
         if (!is_string($frags) or $frags == '') {
-            throw new \BadMethodCallException("Provide path components in a space separated list", 1);
+            throw new BadMethodCallException("Provide path components in a space separated list", 1);
         }
         $frags = explode(' ', trim($frags));
         $pathfrags = array($this->_includesPath);
@@ -62,7 +54,7 @@ class ThemeCustomizeSection
         foreach (glob($controlsFolder . '/*CustomControl.php') as $fileName) {
             
             // MultiImageControl.php will have a slug of 'multi-image'
-            $slug = Str::hyphen(preg_replace('/CustomControl/', '', basename($fileName, '.php')));
+            $slug = tad_Str::hyphen(preg_replace('/CustomControl/', '', basename($fileName, '.php')));
             
             // store the controls that come with the library
             // again presumin PSR-o compliancy the class name will be the same
@@ -73,16 +65,16 @@ class ThemeCustomizeSection
     public function addSetting($id, $label = '', $default = '', $controlType = 'text', $arguments = null)
     {
         if (!is_string($id)) {
-            throw new \BadMethodCallException("Id must be a string", 1);
+            throw new BadMethodCallException("Id must be a string", 1);
         }
         if (!is_null($arguments) and !is_array($arguments)) {
-            throw new \BadMethodCallException("Arguments must be an array", 2);
+            throw new BadMethodCallException("Arguments must be an array", 2);
         }
         if (!is_string($label)) {
-            throw new \BadMethodCallException("Label must be a string", 3);
+            throw new BadMethodCallException("Label must be a string", 3);
         }
         if (!is_string($controlType)) {
-            throw new \BadMethodCallException("Control type must be a string", 4);
+            throw new BadMethodCallException("Control type must be a string", 4);
         }
         $this->settings[$id] = array('label' => $label, 'default' => $default, 'controlType' => $controlType,);
         if (is_array($arguments)) {
@@ -134,7 +126,7 @@ class ThemeCustomizeSection
                 $controlClass = $this->customControls[$type];
                 $wp_customize->add_control(new $controlClass($wp_customize, $id, $controlArguments));
             } elseif (in_array($type, $this->classControlTypes)) {
-                $className = '\WP_Customize_' . Str::ucfirstUnderscore($type) . '_Control';
+                $className = 'WP_Customize_' . tad_Str::ucfirstUnderscore($type) . '_Control';
                 $wp_customize->add_control(new $className($wp_customize, $id, $controlArguments));
             } else {
                 $wp_customize->add_control($this->sectionId . '_' . $id, $controlArguments);
@@ -151,7 +143,7 @@ class ThemeCustomizeSection
     public function containsSettingWith($settingId, $key, $value)
     {
         if (!is_string($key)) {
-            throw new \BadMethodCallException("Key must be a string", 1);
+            throw new BadMethodCallException("Key must be a string", 1);
         }
         if (!$this->containsSetting($settingId)) {
             return false;
@@ -164,10 +156,10 @@ class ThemeCustomizeSection
     public function addCustomControl($slug, $className)
     {
         if (!is_string($slug)) {
-            throw new \BadMethodCallException("Custom control slug must be a string", 1);
+            throw new BadMethodCallException("Custom control slug must be a string", 1);
         }
         if (!is_string($className)) {
-            throw new \BadMethodCallException("Fully qualified class name must be a string", 2);
+            throw new BadMethodCallException("Fully qualified class name must be a string", 2);
         }
         $this->customControls[$slug] = $className;
     }
